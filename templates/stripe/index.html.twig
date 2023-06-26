@@ -27,7 +27,7 @@
                             <input type='hidden' name='stripeToken' id='stripe-token-id'>                              
                             <label for="card-element" class="mb-5">Checkout Forms</label>
                             <br>
-                            <div id="card-element" class="form-control" ></div>
+                            <div id="card-element" class="form-control"></div>
                             <button 
                                 id='pay-btn'
                                 class="btn btn-success mt-3"
@@ -35,7 +35,7 @@
                                 style="margin-top: 20px; width: 100%;padding: 7px;"
                                 onclick="createToken()">PAY $5
                             </button>
-                        <form>
+                        </form> <!-- Asegúrate de cerrar correctamente el formulario aquí -->
                     </div>
                 </div>
             </div>
@@ -52,8 +52,6 @@
         function createToken() {
             document.getElementById("pay-btn").disabled = true;
             stripe.createToken(cardElement).then(function(result) {
-     
-                     
                 if(typeof result.error != 'undefined') {
                     document.getElementById("pay-btn").disabled = false;
                     alert(result.error.message);
